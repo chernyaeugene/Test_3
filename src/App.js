@@ -1,5 +1,8 @@
 import React from "react";
 import './index.css';
+import Game from "./Work/Game";
+import Result from "./Work/Result";
+
 
 const questions = [
   {
@@ -21,36 +24,17 @@ const questions = [
     ],
     correct: 2,
   },
+  {
+    title: 'Что такое JSX2?',
+    variants: [
+      'Это простой HTML',
+      'Это функция',
+      'Это тот же HTML, но с возможностью выполнять JS-код',
+    ],
+    correct: 3,
+  },
 
 ];
-
-function Result({ correct }) {
-  return (
-      <div className="result">
-        <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" />
-        <h2>Вы отгадали {correct} ответа из {questions.length}</h2>
-          <a href="/">
-              <button>Попробовать снова</button>
-          </a>
-      </div>
-  );
-}
-
-function Game({ question, onclickVariant, step }) {
-    const percent = Math.round((step / questions.length) * 100);
-
-  return (
-      <>
-        <div className="progress">
-          <div style={{ width: `${percent}%` }} className="progress__inner"></div>
-        </div>
-        <h1>{question.title}?</h1>
-        <ul>
-            {question.variants.map((text,index) => <li onClick={() => onclickVariant(index)} key={index}>{text}</li>)}
-        </ul>
-      </>
-  );
-}
 
 
 function App() {
@@ -69,8 +53,8 @@ function App() {
 
   return (
       <div className="App">
-          {step !== questions.length ? (<Game step = {step} question = {question} onclickVariant = {onclickVariant}/>) :
-              (<Result correct = {correct}/>)}
+          {step !== questions.length ? (<Game questions = {questions} step = {step} question = {question} onclickVariant = {onclickVariant}/>) :
+              (<Result questions = {questions} correct = {correct}/>)}
       </div>
   );
 }
