@@ -31,30 +31,28 @@ const questions = [
       'Это функция',
       'Это тот же HTML, но с возможностью выполнять JS-код',
     ],
-    correct: 3,
+    correct: 2,
   },
 
 ];
 
 
 function App() {
-    const [step, setStep] = React.useState(0);
-    const [correct, setCorrect] = React.useState(0);
-    const question = questions[step];
-
-    const onclickVariant = (index) => {
-        setStep(step + 1);
-
-        if (index === question.correct) {
-            setCorrect(correct + 1);
-        }
-    };
-
+  const  [step, setStep] = React.useState(0)
+  const question = questions[step]
+  const [correct, setCorrect] = React.useState(0)
+  const onClickVariable = (index) => {
+    setStep(step + 1)
+    if (index === question.correct) {
+      setCorrect(correct + 1)
+    }
+  }
 
   return (
       <div className="App">
-          {step !== questions.length ? (<Game questions = {questions} step = {step} question = {question} onclickVariant = {onclickVariant}/>) :
-              (<Result questions = {questions} correct = {correct}/>)}
+        {step !== questions.length ? (<Game step = {step} questions ={questions} question = {question} onClickVariable = {onClickVariable}/>
+        ) : (<Result correct = {correct} questions = {questions}/>)}
+
       </div>
   );
 }
