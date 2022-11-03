@@ -1,8 +1,8 @@
 import React from "react";
 
 
-function Game({ question, onClickVariable, questions, step }) {
-    const percent = Math.round((step / questions.length) *100)
+function Game({ question, onClickVariant, step, questions }) {
+    const percent = Math.round((step / questions.length) * 100)
     return (
         <>
             <div className="progress">
@@ -10,7 +10,7 @@ function Game({ question, onClickVariable, questions, step }) {
             </div>
             <h1>{question.title}</h1>
             <ul>
-                {question.variants.map((item, index) => <li onClick={() => onClickVariable(index)} key={index}>{item}</li>)}
+                {question.variants.map((item, index) => <li onClick={() => onClickVariant(index)} key={index}>{item}</li>)}
             </ul>
         </>
     );
