@@ -1,6 +1,6 @@
 import React from "react";
 
-function Result({ correct, questions }) {
+function Result({ questions, correct }) {
     return (
         <div className="result">
             <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" />

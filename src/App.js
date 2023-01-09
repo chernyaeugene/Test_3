@@ -38,19 +38,24 @@ const questions = [
 
 
 function App() {
-const [step, setStep] = React.useState(0)
-  const question = questions[step]
+  const [step, setStep] = React.useState(0)
+const question = questions[step]
   const [correct, setCorrect] = React.useState(0)
-const onClickVariant = (index) => {
-  setStep(step + 1)
-  if (index === question.correct) {
-    setCorrect(correct + 1)
+  const onClickVariant = (index) => {
+    setStep(step + 1)
+    if (index === question.correct) {
+      setCorrect(correct + 1)
+    }
   }
-}
+
   return (
       <div className="App">
-        {step !== questions.length ? (<Game question = {question} onClickVariant = {onClickVariant} step = {step} questions = {questions}/>
-        ) : (<Result correct = {correct} questions = {questions}/>)}
+        { step !== questions.length ? (
+            <Game questions = {questions} step = {step} onClickVariant = {onClickVariant} question = {question}/>
+        ) : (
+            <Result questions = {questions} correct = {correct}/>
+        )}
+
       </div>
   );
 }
